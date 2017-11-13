@@ -15,5 +15,7 @@ import 'rxjs';
 import 'patternfly/dist/css/patternfly.css';
 import 'patternfly/dist/css/patternfly-additions.css';
 import 'highlight.js/styles/github.css';
+import 'ag-grid/dist/styles/ag-grid.css';
+import 'ag-grid/dist/styles/theme-fresh.css';
 
 require('patternfly/dist/js/patternfly-settings');

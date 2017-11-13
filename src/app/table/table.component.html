@@ -1,1 +1,7 @@
-<span>Hello</span>
+<ag-grid-angular class="ag-fresh"
+                 style="width: 600px; height: 215px;"
+                 [rowData]="flatRowData"
+                 [columnDefs]="columnDefs"
+                 [gridOptions]="gridOptions"
+                 (gridReady)="gridReady($event)">
+</ag-grid-angular>

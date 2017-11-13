@@ -1,0 +1,13 @@
+<div *ngIf="params.data.children && params.data.children.length > 0; then showRowToggle else showPlaceholder"></div>
+<ng-template #showRowToggle>
+  <span class="padding-left-10 fa"
+        [ngClass]="{'fa-angle-down': params.data.expanded,
+                    'fa-angle-right': !params.data.expanded}"
+        (click)="toggleChildNode($event)"></span>
+  <span class="padding-left-8">{{ params.value }}</span>
+</ng-template>
+<ng-template #showPlaceholder>
+  <span class="padding-left-20"></span>
+  <span class="padding-left-10">{{ params.value }}</span>
+</ng-template>
+

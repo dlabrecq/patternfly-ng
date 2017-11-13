@@ -95,6 +95,10 @@ export { SortEvent } from './src/app/sort/sort-event';
 export { SortField } from './src/app/sort/sort-field';
 export { SortModule } from './src/app/sort/sort.module';
 
+// Table
+export { TableConfig } from './src/app/table/table-config';
+export { TableComponent } from './src/app/table/table.component';
+
 // Toolbar
 export { ToolbarConfig } from './src/app/toolbar/toolbar-config';
 export { ToolbarComponent } from './src/app/toolbar/toolbar.component';

@@ -9,9 +9,13 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
+import { GridOptions } from 'ag-grid/main';
+
+import { ArrayUtil } from '../utilities/array.util';
 import { TableConfig } from './table-config';
 
 import { cloneDeep, defaults, isEqual } from 'lodash';
+// const flattenTree = require('flatten-tree');
 
 /**
  * Table component.
@@ -23,22 +27,42 @@ import { cloneDeep, defaults, isEqual } from 'lodash';
 })
 export class TableComponent implements DoCheck, OnInit {
   /**
+   * An array of items to display for table columns
+   */
+  @Input() columnDefs: any[];
+
+  /**
    * The action config containing component properties
    */
   @Input() config: TableConfig;
 
   /**
+   * An object containing table properties
+   */
+  @Input() gridOptions?: GridOptions;
+
+  /**
+   * An array of items to display for table rows
+   */
+  @Input() rowData: any[];
+
+  /**
    * Items template
    */
-  @Input() template: TemplateRef<any>;
+  // @Input() template: TemplateRef<any>;
 
   /**
    * The event emitted when an action has been selected
    */
-  @Output('onActionSelect') onActionSelect = new EventEmitter();
+  @Output('onGridReady') onGridReady = new EventEmitter();
 
   private defaultConfig = {
   } as TableConfig;
+  private _flatRowData: any[];
+  private flattenOptions = {
+    initNode: (node: any) => node // cloneDeep(node) avoid mutating the tree
+  };
+  private flattenPropertyKey: string = 'children';
   private prevConfig: TableConfig;
 
   /**
@@ -46,7 +70,7 @@ export class TableComponent implements DoCheck, OnInit {
    *
    * @param el The element reference for this component
    */
-  constructor() {
+  constructor(private arrayUtil: ArrayUtil) {
   }
 
   // Initialization
@@ -77,8 +101,43 @@ export class TableComponent implements DoCheck, OnInit {
     } else {
       this.config = cloneDeep(this.defaultConfig);
     }
+    this.prevConfig = cloneDeep(this.config);
+
+    // Set filter to show visible rows
+    if (this.gridOptions === undefined) {
+      this.gridOptions = <GridOptions>{};
+    }
+    this.gridOptions.isExternalFilterPresent = () => { return true; };
+    this.gridOptions.doesExternalFilterPass = (node) => {
+      // return this.gridOptions.api.getValue('isVisible', node);
+      return node.data.isVisible;
+    };
+
+    // Flatten tree
+    if (this.rowData !== undefined) {
+      this.rowData.forEach((node) => {
+        node.isVisible = true;
+      });
+      this._flatRowData = this.arrayUtil.flattenTree(this.rowData, this.flattenPropertyKey, this.flattenOptions);
+    }
+  }
+
+  // Accessors
+
+  /**
+   * Returns a flattened list of items and children
+   *
+   * @returns {any[]}
+   */
+  get flatRowData(): any[] {
+    return this._flatRowData;
+  }
+
+  // Actions
+
+  gridReady($event: any): void {
+    this.onGridReady.emit($event);
   }
 
   // Private
-
 }
