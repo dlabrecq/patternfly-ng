@@ -19,6 +19,7 @@ import { SampleExampleComponent } from '../app/sample/examples/sample-example.co
 import { SearchHighlightExampleComponent } from '../app/search-highlight/examples/search-highlight-example.component';
 import { SortExampleComponent } from '../app/sort/examples/sort-example.component';
 import { SparklineExampleComponent } from '../app/chart/sparkline/examples/sparkline-example.component';
+import { TableExampleComponent } from '../app/table/examples/table-example.component';
 import { ToastNotificationExampleComponent } from '../app/notification/examples/toast-notification-example.component';
 import { ToolbarExampleComponent } from '../app/toolbar/examples/toolbar-example.component';
 import { TreeListExampleComponent } from '../app/list/tree-list/examples/tree-list-example.component';
@@ -87,6 +88,9 @@ const routes: Routes = [{
   }, {
     path: 'toastnotification',
     component: ToastNotificationExampleComponent
+  }, {
+    path: 'table',
+    component: TableExampleComponent
   }, {
     path: 'toolbar',
     component: ToolbarExampleComponent
