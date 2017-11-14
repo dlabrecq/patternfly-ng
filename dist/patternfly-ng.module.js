@@ -20,6 +20,7 @@ import { RemainingCharsCountModule } from './src/app/remaining-chars-count/remai
 import { SampleModule } from './src/app/sample/sample.module';
 import { SearchHighlightModule } from './src/app/search-highlight/search-highlight.module';
 import { SortModule } from './src/app/sort/sort.module';
+import { TableModule } from './src/app/table/table.module';
 import { ToolbarModule } from './src/app/toolbar/toolbar.module';
 import { TruncateModule } from './src/app/truncate/truncate.module';
 import { WizardModule } from './src/app/wizard/wizard.module';
@@ -48,6 +49,7 @@ PatternFlyNgModule = __decorate([
             SampleModule,
             SearchHighlightModule,
             SortModule,
+            TableModule,
             ToolbarModule,
             TruncateModule,
             WizardModule
