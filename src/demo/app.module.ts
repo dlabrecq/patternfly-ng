@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { DemoComponentsModule } from './components/demo-components.module';
 import { NavbarModule } from './navbar/navbar.module';
 
+import { UpgradeModule } from '@angular/upgrade/static';
+
 // Main areas
 //  import example modules
 import { AboutModalExampleModule } from '../app/modal/example/about-modal-example.module';
@@ -81,6 +83,7 @@ from '../app/navigation/application-launcher/example/application-launcher-exampl
     TreeListExampleModule,
     TruncateExampleModule,
     VerticalNavigationExampleModule,
+    UpgradeModule,
     WizardExampleModule
   ],
   declarations: [
@@ -91,4 +94,9 @@ from '../app/navigation/application-launcher/example/application-launcher-exampl
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private upgrade: UpgradeModule) { }
+  ngDoBootstrap() {
+    this.upgrade.bootstrap(document.body, ['catalogApp'], { strictDi: true });
+  }
+}
