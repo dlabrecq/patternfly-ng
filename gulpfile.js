@@ -27,8 +27,7 @@ var globalExcludes = [
   '!./**/demo.*',
   '!./**/demo/**',
   '!./**/example',
-  '!./**/example/**',
-  '!./**/tree-list/**'
+  '!./**/example/**'
 ];
 
 /**

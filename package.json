@@ -105,6 +105,7 @@
     "patternfly": "^3.28.0"
   },
   "optionalDependencies": {
+    "angular-tree-component": "8.0.0",
     "@swimlane/ngx-datatable": "^13.0.0",
     "c3": "^0.4.15",
     "ng2-dragula": "^1.5.0",

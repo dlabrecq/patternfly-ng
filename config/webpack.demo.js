@@ -234,7 +234,7 @@ module.exports = {
       excludeExternals: true,
       excludePrivate: true,
       excludeProtected: true,
-      exclude: ['**/+(example|demo|tree-list)/**' ],
+      exclude: ['**/+(example|demo)/**' ],
       tsconfig: 'tsconfig.json'
     }, './src/app'),
 
